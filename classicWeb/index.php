@@ -984,6 +984,11 @@ function html_data_table($arr, $count) {
           	$value = '>field '.$key.'  not on resultset>';
         }
 
+        //substitute angle brackets '<' and '>' to prevent html injection by traps
+        $value = preg_replace('@<@', '', $value);
+        $value = preg_replace('@>@', '', $value);
+
+
         $value = preg_replace('@\n+$@', '', $value);
         $value = preg_replace('@\n@', '<br />', $value);
 
